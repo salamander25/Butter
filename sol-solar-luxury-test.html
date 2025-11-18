@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sol Solar Solutions – Luxury WhatsApp Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Effortless, beautiful solar and home upgrades with Salvador Castillo. Message on WhatsApp for a relaxed, zero-pressure consultation." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050509;
+      color: #f7f3e9;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, #f3c76b33, transparent 55%),
+                  radial-gradient(circle at bottom, #f28f3b22, #050509 70%);
+      z-index: -2;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      filter: brightness(0.35) saturate(1.2);
+      z-index: -3;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(5, 5, 9, 0.9),
+        rgba(5, 5, 9, 0.6),
+        rgba(10, 10, 15, 0.96)
+      );
+      z-index: -1;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      animation: fadeIn 1.4s ease-out forwards;
+      opacity: 0;
+    }
+
+    .hero-left {
+      max-width: 640px;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #f6e4b8;
+      opacity: 0.85;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #e0d7c9;
+      opacity: 0.9;
+      margin-bottom: 1.75rem;
+      max-width: 34rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .btn-whatsapp {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f9d976, #f39f4c);
+      color: #24160a;
+      font-weight: 600;
+      font-size: 0.98rem;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+      text-decoration: none;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      overflow: hidden;
+    }
+
+    .btn-whatsapp::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fff5d4aa, transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .btn-whatsapp span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-whatsapp:hover::before {
+      opacity: 1;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 224, 189, 0.35);
+      background: rgba(10, 10, 15, 0.7);
+      color: #f5e5c4;
+      font-size: 0.9rem;
+      text-decoration: none;
+      backdrop-filter: blur(16px);
+      gap: 0.4rem;
+      transition: background 0.2s ease-out, border-color 0.2s ease-out, transform 0.15s ease-out;
+    }
+
+    .btn-secondary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(13, 13, 20, 0.95);
+      border-color: rgba(245, 224, 189, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: #d5c7af;
+      opacity: 0.9;
+    }
+
+    .hero-note strong {
+      color: #f8e3b0;
+      font-weight: 500;
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 360px;
+      background: radial-gradient(circle at top, #f3c76b22, #09080d);
+      border-radius: 1.75rem;
+      padding: 1.2rem;
+      border: 1px solid rgba(245, 224, 189, 0.3);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card-header {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #f6e4b8;
+      opacity: 0.85;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card-main {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-sub {
+      font-size: 0.9rem;
+      color: #e0d7c9;
+      opacity: 0.9;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-row span.label {
+      color: #d9cdb7;
+      opacity: 0.95;
+    }
+
+    .hero-card-row span.value {
+      font-weight: 600;
+      color: #f8e3b0;
+    }
+
+    .hero-card-footer {
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: #bbaa90;
+      opacity: 0.9;
+    }
+
+    .section {
+      padding: 4rem 1.5rem 3.5rem;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f6e4b8;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.3vw, 2rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: #e0d7c9;
+      max-width: 40rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(245, 224, 189, 0.3);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      max-width: 800px;
+    }
+
+    .video-wrapper video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .video-caption {
+      font-size: 0.85rem;
+      color: #d3c4a8;
+      margin-top: 0.6rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: radial-gradient(circle at top left, #f3c76b11, #09080d);
+      border-radius: 1.4rem;
+      border: 1px solid rgba(245, 224, 189, 0.25);
+      padding: 1.3rem;
+    }
+
+    .feature-title {
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      color: #d9cdb7;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .step {
+      border-radius: 1.4rem;
+      padding: 1.3rem;
+      background: linear-gradient(145deg, #0a090f, #111019);
+      border: 1px solid rgba(247, 221, 176, 0.25);
+    }
+
+    .step-number {
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f6e4b8;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      color: #d9cdb7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 2rem;
+    }
+
+    .about-card {
+      background: radial-gradient(circle at top, #f3c76b18, #09080d);
+      border-radius: 1.4rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(245, 224, 189, 0.25);
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: #e0d7c9;
+    }
+
+    .faq-item {
+      margin-bottom: 1.3rem;
+    }
+
+    .faq-q {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: #d9cdb7;
+    }
+
+    .section-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .section-cta p {
+      font-size: 0.95rem;
+      color: #e0d7c9;
+      margin-bottom: 0.8rem;
+    }
+
+    footer {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid rgba(245, 224, 189, 0.2);
+      background: #050509;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: 0.8rem;
+      color: #bbaa90;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      width: 3.1rem;
+      height: 3.1rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffffcc, #1faa54);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      z-index: 20;
+      animation: floatPulse 3s ease-in-out infinite;
+      text-decoration: none;
+    }
+
+    .whatsapp-float span {
+      font-size: 1.6rem;
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatPulse {
+      0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5);
+      }
+      50% {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+      }
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid-3,
+      .steps,
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-inner {
+        text-align: left;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-whatsapp,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <!-- Background Sora video loop (no sound) -->
+    <!-- Replace src with your Sora video file name -->
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="sora-hero.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tagline">SOL SOLAR SOLUTIONS • PRIVATE CLIENT ACCESS</div>
+        <h1 class="hero-title">Effortless, Beautiful Solar &amp; Home Upgrades.</h1>
+        <p class="hero-subtitle">
+          Lower your bill. Raise your home’s value.<br />
+          No pressure. Just a relaxed conversation, one-on-one with Salvador.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-whatsapp"
+             href="https://wa.me/19495915731?text=Hi%20Salvador%2C%20I%27m%20interested%20in%20solar%20(or%20home%20upgrades)."
+             target="_blank" rel="noopener noreferrer">
+            <span>Message Salvador Instantly on WhatsApp</span>
+          </a>
+
+          <a class="btn-secondary" href="#intro-video">
+            <span class="icon">▶</span>
+            <span>Watch 15-Second Intro</span>
+          </a>
+        </div>
+
+        <p class="hero-note">
+          <strong>Fast replies • Friendly, zero-pressure chat</strong> — ask anything about solar, batteries, or home upgrades.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-header">Sample Savings Snapshot</div>
+          <div class="hero-card-main">$410 → $132 / month</div>
+          <div class="hero-card-sub">
+            Example of a California homeowner shifting from a rising utility bill to a stable solar payment.
+          </div>
+          <div class="hero-card-row">
+            <span class="label">Old Utility Bill</span>
+            <span class="value">$410</span>
+          </div>
+          <div class="hero-card-row">
+            <span class="label">New Solar Payment</span>
+            <span class="value">$132</span>
+          </div>
+          <div class="hero-card-footer">
+            Actual results vary by home, usage, and program. Salvador walks you through everything in a calm, simple way.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO VIDEO SECTION -->
+  <section class="section" id="intro-video">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">SEE IT IN 15 SECONDS</div>
+        <h2 class="section-title">How Your Roof Becomes a Wealth Machine.</h2>
+        <p class="section-subtitle">
+          This short Sora-powered video is the same vibe you get working with Salvador: warm, calm, and focused on saving you money while upgrading your lifestyle.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <!-- Embed your final Sora video WITH SOUND here -->
+        <video controls preload="metadata">
+          <source src="sora-hero-with-audio.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-caption">
+        A cinematic glimpse of what it feels like to lock in lower bills and make your home work for you.
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">WHY CLIENTS WORK WITH SALVADOR</div>
+        <h2 class="section-title">Luxury-Level Care, Real-World Savings.</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-title">Calm, Zero-Pressure Conversations</div>
+          <p class="feature-text">
+            No scripts, no pushy sales. Just a private WhatsApp chat where you can ask questions, send photos of your roof, and explore options at your pace.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-title">High-End Systems, Simplified</div>
+          <p class="feature-text">
+            American-made panel options, premium inverters, and battery choices — explained in normal language so you feel confident, not overwhelmed.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-title">Designed Around Your Bills</div>
+          <p class="feature-text">
+            Every proposal starts with your actual usage and goals, from controlling bills to prepping for EVs, pools, A/C, or future home upgrades.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-STEP PROCESS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">HOW IT WORKS</div>
+        <h2 class="section-title">Three Simple, Comfortable Steps.</h2>
+        <p class="section-subtitle">
+          Think of this like a luxury concierge service for your energy — simple steps, smooth handling, and full support.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">STEP 1</div>
+          <div class="step-title">Message on WhatsApp</div>
+          <p class="step-text">
+            Send Salvador a quick message with your address and a recent power bill. You can chat while you’re relaxing at home — no appointments required.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">STEP 2</div>
+          <div class="step-title">Receive a Calm, Clear Proposal</div>
+          <p class="step-text">
+            Salvador designs a custom layout and cost breakdown. You see projected savings, options, and incentives with an easy explanation.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">STEP 3</div>
+          <div class="step-title">Enjoy the Upgrade</div>
+          <p class="step-text">
+            If you decide to move forward, the installation and paperwork are handled for you. You focus on enjoying a more efficient, elevated home.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + FAQ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="section-kicker">ABOUT SALVADOR</div>
+          <h2 class="section-title">A Solar Guide Who Actually Listens.</h2>
+          <p class="about-text">
+            Salvador combines years of door-to-door experience with advanced training in communication, hypnosis, and NLP — not to manipulate you, but to make complicated decisions feel simpler and lighter.<br /><br />
+            His focus is on luxury-level care: clear expectations, transparent numbers, and solutions that match your lifestyle, not just your rooftop. Whether you’re in Southern California or looking at a commercial or out-of-state property, he’s building long-term relationships, not quick hits.
+          </p>
+        </div>
+
+        <div>
+          <div class="section-kicker">COMMON QUESTIONS</div>
+          <div class="section-title" style="font-size:1.05rem; margin-bottom:0.9rem;">Solar, Incentives &amp; Next Steps.</div>
+
+          <div class="faq-item">
+            <div class="faq-q">What do you need from me to get started?</div>
+            <div class="faq-a">
+              Just your address and a recent power bill screenshot. From there, Salvador can model your usage and show you realistic options over WhatsApp.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do I have to decide right away?</div>
+            <div class="faq-a">
+              No. The whole process is designed to be low-pressure. You can review the numbers, ask follow-up questions, and move at your own pace.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Can we include batteries or future upgrades?</div>
+            <div class="faq-a">
+              Yes. Systems can be designed with batteries, EV charging, or future add-ons in mind. Salvador can walk you through phased options that match your goals.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <p>Ready to see what your numbers look like?</p>
+        <a class="btn-whatsapp"
+           href="https://wa.me/19495915731?text=Hi%20Salvador%2C%20I%27d%20like%20to%20see%20what%20solar%20could%20do%20for%20my%20home."
+           target="_blank" rel="noopener noreferrer">
+          <span>Message Salvador on WhatsApp Now</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Sol Solar Solutions LLC. All rights reserved.</div>
+      <div>Private client page • By referral and invitation.</div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp bubble -->
+  <a class="whatsapp-float"
+     href="https://wa.me/19495915731?text=Hi%20Salvador%2C%20I%27m%20interested%20in%20solar%20(or%20home%20upgrades)."
+     target="_blank" rel="noopener noreferrer">
+    <span>💬</span>
+  </a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
